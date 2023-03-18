@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Game.css";
+import axios from "axios";
 
 function Game() {
   //variabe declaration
   const navigate = useNavigate();
   var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState(0);
+  const [sysNumRes, setSysNumRes] = useState("");
   const [userNum, setUserNum] = useState(null);
   const [sysNum, setSysNum] = useState(null);
   const win = ["+", "+", "+", "+"];
@@ -15,7 +17,6 @@ function Game() {
     score: 0,
   });
   const [isEnd, setIsEnd] = useState(false);
-  const [score, setScore] = useState();
 
   //for login check
   useEffect(() => {
@@ -31,29 +32,57 @@ function Game() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let sysArr = sysNum.split("");
-    let userArr = userNum.split("");
-
-    console.log(sysArr, userArr);
-
-    //call result function
-    const result2 = result(sysArr, userArr);
-
-    if (JSON.stringify(win) === JSON.stringify(result2)) {
-      setIsEnd(true);
-      setEndGame({
-        ...endGame,
-        ["message"]: "you won the game",
-        ["score"]: 100 - count * 10,
-      });
+    if (count === 9) {
+      {
+        setIsEnd(true);
+        setEndGame({
+          ...endGame,
+          ["message"]: "you loss the game",
+          ["score"]: 0,
+        });
+        setUserNum("");
+        updateScore(0);
+      }
     } else {
-      setIsEnd(true);
-      setEndGame({
-        ...endGame,
-        ["message"]: "you loss the game try again",
-        ["score"]: 100 - count * 10,
-      });
+      let sysArr = sysNum.split("");
+      let userArr = userNum.split("");
+
+      console.log(sysArr, userArr);
+
+      //call result function
+      const result2 = result(sysArr, userArr);
+      setSysNumRes(result2);
+
+      if (JSON.stringify(win) === JSON.stringify(result2)) {
+        setIsEnd(true);
+        setEndGame({
+          ...endGame,
+          ["message"]: "you won the game",
+          ["score"]: 100 - count * 10,
+        });
+        setUserNum("");
+        updateScore(100 - count * 10);
+      } else {
+        setCount(count + 1);
+        setUserNum("");
+      }
     }
+  };
+
+  //update-score
+  const updateScore = async (scoreval) => {
+    const value = {
+      username: localStorage.getItem("username"),
+      score: scoreval,
+    };
+
+    console.log(value);
+
+    const { username, score } = value;
+    const { data } = await axios.post(
+      `https://guessing-number-server.onrender.com/api/score/create`,
+      { username, score }
+    );
   };
 
   //gameResult
@@ -106,18 +135,14 @@ function Game() {
             onChange={(event) => setUserNum(event.target.value)}
           />
           <button type="submit">Start Game</button>
-        </form>
 
-        <div>
           {isEnd ? (
             <>
-              <p
-                style={{ color: "red" }}
-              >{`${endGame.message} and your score is:${endGame.score}`}</p>
-              <button>Try Again</button>
+              <p>{`${endGame.message} and your score is:${endGame.score} `}</p>
             </>
           ) : null}
-        </div>
+          <p>{`your try count is:${count} and result : [${sysNumRes}]`}</p>
+        </form>
 
         <div>
           <Link className="link-tag game-btn" type="button" to={"/score-board"}>

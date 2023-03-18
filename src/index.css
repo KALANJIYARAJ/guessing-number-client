@@ -26,27 +26,27 @@ input {
 .link-tag {
   text-decoration: none;
   color: white !important;
-  background-color: rgba(0, 0, 255, 0.5);
+  background-color: #cd5438;
   padding: 1rem 0.5rem;
   border-radius: 0.75rem;
   font-size: 1rem;
 }
 
 .link-tag:hover {
-  background-color: brown !important;
+  background-color: #d91604 !important;
 }
 
 button {
   border: none;
   color: white !important;
-  background-color: rgba(0, 0, 255, 0.5);
+  background-color: #cd5438;
   padding: 1rem 0.5rem;
   border-radius: 0.75rem;
   font-size: 1rem;
 }
 
 button:hover {
-  background-color: brown !important;
+  background-color: #d91604 !important;
 }
 
 input {
