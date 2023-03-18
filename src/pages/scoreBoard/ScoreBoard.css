@@ -31,3 +31,7 @@ th {
   background-color: rgb(43, 43, 43);
   color: white;
 }
+
+.link-button {
+  direction: none;
+}

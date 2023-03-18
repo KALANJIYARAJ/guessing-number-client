@@ -5,15 +5,13 @@ import ScoreBoard from "./pages/scoreBoard/ScoreBoard";
 
 function App() {
   return (
-    <div className="parent-div">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Game />} />
-          <Route path="/login" element={<Home />} />
-          <Route path="/score-board" element={<ScoreBoard />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Game />} />
+        <Route path="/login" element={<Home />} />
+        <Route path="/score-board" element={<ScoreBoard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

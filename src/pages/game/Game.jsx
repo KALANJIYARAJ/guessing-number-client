@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./Game.css";
 
 function Game() {
   //variabe declaration
@@ -89,33 +90,43 @@ function Game() {
 
   return (
     <>
-      <form action="" onSubmit={(event) => handleSubmit(event)}>
-        <div className="brand">
-          <h1>Enter Your Number!!</h1>
+      <div className="parent-div">
+        <form
+          className="game-form"
+          action=""
+          onSubmit={(event) => handleSubmit(event)}
+        >
+          <h1 className="game-head">Enter Your Number!!</h1>
+          <input
+            className="game-input"
+            type="text"
+            placeholder="Enter your number"
+            name="username"
+            value={userNum}
+            onChange={(event) => setUserNum(event.target.value)}
+          />
+          <button type="submit">Start Game</button>
+        </form>
+
+        <div>
+          {isEnd ? (
+            <>
+              <p
+                style={{ color: "red" }}
+              >{`${endGame.message} and your score is:${endGame.score}`}</p>
+              <button>Try Again</button>
+            </>
+          ) : null}
         </div>
-        <input
-          type="text"
-          placeholder="Enter your number"
-          name="username"
-          value={userNum}
-          onChange={(event) => setUserNum(event.target.value)}
-        />
-        <button type="submit">Start Game</button>
-      </form>
 
-      {isEnd ? (
-        <>
-          <p
-            style={{ color: "red" }}
-          >{`${endGame.message} and your score is:${endGame.score}`}</p>
-          <button>Try Again</button>
-        </>
-      ) : null}
-      <Link className="link-tag" type="button" to={"/score-board"}>
-        View Score Board
-      </Link>
+        <div>
+          <Link className="link-tag game-btn" type="button" to={"/score-board"}>
+            View Score Board
+          </Link>
 
-      <button>Logout</button>
+          <button className="game-btn">Logout</button>
+        </div>
+      </div>
     </>
   );
 }

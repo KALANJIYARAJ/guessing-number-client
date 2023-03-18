@@ -1,0 +1,16 @@
+.game-form {
+  border: 2px solid rgb(133, 133, 133);
+  padding: 3rem;
+}
+
+.game-head {
+  margin-bottom: 1rem;
+}
+
+.game-input {
+  margin-right: 1rem;
+}
+
+.game-btn {
+  margin-right: 1rem;
+}

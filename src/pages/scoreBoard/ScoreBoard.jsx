@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./ScoreBoard.css";
 import axios from "axios";
 
@@ -48,6 +48,9 @@ function ScoreBoard() {
           })}
         </tbody>
       </table>
+      <Link className="link-tag" to={"/"}>
+        Back to Game
+      </Link>
     </div>
   );
 }

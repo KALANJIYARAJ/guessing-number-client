@@ -22,18 +22,20 @@ function Home() {
   };
 
   return (
-    <form action="" onSubmit={(event) => handleSubmit(event)}>
-      <div className="brand">
-        <h1>Start New Game!!</h1>
-      </div>
-      <input
-        type="text"
-        placeholder="Enter your name"
-        name="username"
-        onChange={(e) => handleChange(e)}
-      />
-      <button type="submit">Start Game</button>
-    </form>
+    <div className="parent-div">
+      <form action="" onSubmit={(event) => handleSubmit(event)}>
+        <div className="brand">
+          <h1>Start New Game!!</h1>
+        </div>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          name="username"
+          onChange={(e) => handleChange(e)}
+        />
+        <button type="submit">Start Game</button>
+      </form>
+    </div>
   );
 }
 
