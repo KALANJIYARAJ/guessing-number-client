@@ -23,11 +23,15 @@ function Home() {
 
   return (
     <div className="parent-div">
-      <form action="" onSubmit={(event) => handleSubmit(event)}>
-        <div className="brand">
-          <h1>Start New Game!!</h1>
-        </div>
+      <form
+        className="game-form"
+        action=""
+        onSubmit={(event) => handleSubmit(event)}
+      >
+        <h1 className="game-head">Start New Game!!</h1>
+
         <input
+          className="game-input"
           type="text"
           placeholder="Enter your name"
           name="username"

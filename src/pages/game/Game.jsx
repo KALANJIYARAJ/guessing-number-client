@@ -32,7 +32,7 @@ function Game() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (count === 9) {
+    if (count === 10) {
       {
         setIsEnd(true);
         setEndGame({
@@ -42,12 +42,14 @@ function Game() {
         });
         setUserNum("");
         updateScore(0);
+        let randomNum = shuffleArray(numbers).slice(0, 4).join("").toString();
+        setSysNum(randomNum);
       }
     } else {
       let sysArr = sysNum.split("");
       let userArr = userNum.split("");
 
-      console.log(sysArr, userArr);
+      // console.log(sysArr, userArr);
 
       //call result function
       const result2 = result(sysArr, userArr);
@@ -62,6 +64,8 @@ function Game() {
         });
         setUserNum("");
         updateScore(100 - count * 10);
+        let randomNum = shuffleArray(numbers).slice(0, 4).join("").toString();
+        setSysNum(randomNum);
       } else {
         setCount(count + 1);
         setUserNum("");
@@ -76,7 +80,7 @@ function Game() {
       score: scoreval,
     };
 
-    console.log(value);
+    // console.log(value);
 
     const { username, score } = value;
     const { data } = await axios.post(
@@ -117,6 +121,12 @@ function Game() {
     return array;
   }
 
+  //logiout
+  const logoutClick = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
     <>
       <div className="parent-div">
@@ -149,7 +159,9 @@ function Game() {
             View Score Board
           </Link>
 
-          <button className="game-btn">Logout</button>
+          <button className="game-btn" onClick={logoutClick}>
+            Logout
+          </button>
         </div>
       </div>
     </>
