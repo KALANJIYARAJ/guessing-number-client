@@ -19,7 +19,9 @@ function ScoreBoard() {
 
   //get scores
   const getScores = async () => {
-    const { data } = await axios.get(`http://localhost:5000/api/score/get`);
+    const { data } = await axios.get(
+      `https://guessing-number-server.onrender.com/api/score/get`
+    );
     setScores(data);
   };
   return (
