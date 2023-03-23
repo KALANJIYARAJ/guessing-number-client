@@ -53,7 +53,7 @@ function Game() {
       // console.log(sysArr, userArr);
 
       //call result function
-      const result2 = result(sysArr, userArr);
+      const result2 = result(userArr, sysArr);
       setSysNumRes(result2);
 
       if (JSON.stringify(win) === JSON.stringify(result2)) {
