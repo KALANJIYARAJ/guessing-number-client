@@ -25,6 +25,7 @@ function Game() {
     } else {
       let randomNum = shuffleArray(numbers).slice(0, 4).join("").toString();
       setSysNum(randomNum);
+      setCount(0);
     }
   }, []);
 
@@ -66,6 +67,7 @@ function Game() {
         updateScore(100 - count * 10);
         let randomNum = shuffleArray(numbers).slice(0, 4).join("").toString();
         setSysNum(randomNum);
+        setCount(0);
       } else {
         setCount(count + 1);
         setUserNum("");
@@ -121,11 +123,13 @@ function Game() {
     return array;
   }
 
-  //logiout
+  //logout
   const logoutClick = () => {
     localStorage.clear();
     navigate("/login");
   };
+
+  console.log(sysNum);
 
   return (
     <>
