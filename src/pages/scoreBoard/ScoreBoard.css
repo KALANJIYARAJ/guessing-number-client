@@ -9,12 +9,11 @@
 }
 
 .heading {
-  margin-top: 3rem;
+  margin-top: 40rem;
   font-weight: 1000;
 }
 
 .score-table {
-  margin-top: 30rem;
   text-align: center;
   width: 80%;
   border: 1px solid black;
