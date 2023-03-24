@@ -11,10 +11,12 @@ function Home() {
     }
   }, []);
 
+  //handleChange
   const handleChange = (event) => {
     setName(event.target.value);
   };
 
+  //handleSubmit
   const handleSubmit = async (event) => {
     event.preventDefault();
     localStorage.setItem("username", JSON.stringify(name));

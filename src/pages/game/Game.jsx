@@ -45,6 +45,7 @@ function Game() {
         updateScore(0);
         let randomNum = shuffleArray(numbers).slice(0, 4).join("").toString();
         setSysNum(randomNum);
+        setCount(0);
       }
     } else {
       let sysArr = sysNum.split("");
@@ -54,7 +55,7 @@ function Game() {
 
       //call result function
       const result2 = result(userArr, sysArr);
-      setSysNumRes(result2);
+      setSysNumRes(result2.join("").toString());
 
       if (JSON.stringify(win) === JSON.stringify(result2)) {
         setIsEnd(true);
@@ -85,7 +86,7 @@ function Game() {
     // console.log(value);
 
     const { username, score } = value;
-    const { data } = await axios.post(
+    await axios.post(
       `https://guessing-number-server.onrender.com/api/score/create`,
       { username, score }
     );
