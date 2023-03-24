@@ -6,11 +6,7 @@
   gap: 1rem;
   justify-content: center;
   align-items: center;
-}
-
-.heading {
-  margin-top: 50rem;
-  font-weight: 1000;
+  background-color: white;
 }
 
 .score-table {
@@ -30,8 +26,23 @@ td {
 th {
   background-color: #734e38;
   color: white;
+  position: sticky;
+  top: 99px;
 }
 
 .link-button {
   direction: none;
+}
+
+.score-headDiv {
+  height: 100px;
+  width: 100vw;
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0px;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 1000;
 }

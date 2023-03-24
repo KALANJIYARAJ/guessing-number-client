@@ -26,7 +26,7 @@ function ScoreBoard() {
   };
   return (
     <div className="score-wrapper">
-      <h2 className="heading">ScoreBoard</h2>
+      <div className="score-headDiv">ScoreBoard</div>
 
       <table className="score-table">
         <thead>
@@ -48,6 +48,7 @@ function ScoreBoard() {
           })}
         </tbody>
       </table>
+
       <Link className="link-tag" to={"/"}>
         Back to Game
       </Link>

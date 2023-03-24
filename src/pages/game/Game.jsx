@@ -55,7 +55,7 @@ function Game() {
 
       //call result function
       const result2 = result(userArr, sysArr);
-      setSysNumRes(result2.join("").toString());
+      setSysNumRes(result2.join(" ").toString());
 
       if (JSON.stringify(win) === JSON.stringify(result2)) {
         setIsEnd(true);
